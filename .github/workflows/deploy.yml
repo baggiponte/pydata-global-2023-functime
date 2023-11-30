@@ -1,0 +1,58 @@
+name: Deploy Slideshow to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deploy.yml
+      - slides.md
+      - public
+      - package.json
+      - package-lock.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.tool-versions'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build HTML
+        run: npx slidev build --base=/pydata-global-2023-functime
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/configure-pages@v3
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

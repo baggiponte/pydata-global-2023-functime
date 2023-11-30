@@ -1,0 +1,7 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "$version"
+update_changelog_on_bump = true
+annotated_tag = true
+gpg_sign = true

@@ -1,0 +1,35 @@
+h1 {
+  font-weight: 600 !important;
+}
+
+h2 {
+  font-weight: 450 !important;
+  line-height: 1.8 !important;
+  margin-bottom: 10px !important;
+}
+
+blockquote {
+  font-size: 20px !important;
+}
+
+p {
+  font-size: 25px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 30px !important;
+}
+
+ul, ol {
+  font-size: 25px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 10px !important;
+}
+
+ul ul {
+  font-size: 20px !important;
+  line-height: 0.9 !important;
+  margin-bottom: 5px !important;
+}
+
+span {
+  font-size: 20px !important;
+}
