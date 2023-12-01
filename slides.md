@@ -188,7 +188,26 @@ For a more thorough overview, watch [Polars' creator latest talk](https://www.yo
 # 🌏 Why global forecasting?
 A lesson from forecasting competitions
 
-Global forecasting simply means fitting a single model on all the time series.
+<v-clicks>
+
+Global forecasting simply means fitting a single model on all the time series in your panel dataset.
+
+This approach proved successful in multiple forecasting competitions, most notably M4 ([1](https://www.sciencedirect.com/science/article/abs/pii/S0169207020301850) [2](https://www.sciencedirect.com/science/article/abs/pii/S0169207020301850)) and M5 ([1](https://www.sciencedirect.com/science/article/pii/S0169207021001874#b47)).
+
+</v-clicks>
+
+---
+
+# 🌏 Why global forecasting?
+A lesson from forecasting competitions
+
+<v-clicks>
+
+**Gradient boosted regression trees** were fit on tens or even hundreds of thousands of time series and reported great performance, as we are accustomed to.
+
+But global forecasting works well with linear models too, with some **thoughtful and deliberate feature engineering**.
+
+</v-clicks>
 
 
 ---
