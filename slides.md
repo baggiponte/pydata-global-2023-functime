@@ -179,7 +179,7 @@ In Polars, the query optimiser recognises this pattern and uses a *top-k search*
 
 <v-click>
 
-For a more thorough overview, watch [Polars' creator latest talk](https://www.youtube.com/watch?v=tqcudsykOGc&t=1916s)
+For a more thorough overview, watch [Polars' creator latest talk](https://www.youtube.com/watch?v=tqcudsykOGc&t=1916s).
 
 </v-click>
 
