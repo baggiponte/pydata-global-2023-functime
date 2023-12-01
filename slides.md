@@ -213,12 +213,270 @@ But global forecasting works well with linear models too, with some **thoughtful
 ---
 
 # 💻 A forecasting workflow with `functime`
+Let's get our hands dirty!
+
+`functime` can simply be pip installed:
+
+```bash
+# inside a virtual environment
+pip install functime
+```
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Let's get our hands dirty!
+
+Let's import some demo data.
+
+```python
+import functime
+import polars as pl
+
+url = "https://github.com/TracecatHQ/functime/raw/main/data/commodities.parquet"
+y = (
+  pl.scan_parquet(url)
+  .with_columns(pl.col("time").cast(pl.Date))
+)
+```
+
+---
+
+# 💻 A forecasting workflow with `functime`
+How the data must look like
+
+A functime dataset is just a regular Polars DataFrame, but assumes to have three columns:
+
+* An identifier for the time series (e.g. SKU).
+* The time stamp.
+* The target value.
+
+Plus all external covariates.
+
+---
+
+# 💻 A forecasting workflow with `functime`
+How the data must look like
+
+```
+print(y.head().collect())
+
+output
+shape: (5, 3)
+┌────────────────┬────────────┬────────┐
+│ commodity_type ┆ time       ┆ price  │
+│ ---            ┆ ---        ┆ ---    │
+│ str            ┆ date       ┆ f64    │
+╞════════════════╪════════════╪════════╡
+│ Aluminum       ┆ 1960-01-01 ┆ 511.47 │
+│ Aluminum       ┆ 1960-02-01 ┆ 511.47 │
+│ Aluminum       ┆ 1960-03-01 ┆ 511.47 │
+│ Aluminum       ┆ 1960-04-01 ┆ 511.47 │
+│ Aluminum       ┆ 1960-05-01 ┆ 511.47 │
+└────────────────┴────────────┴────────┘
+```
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Plotting and data manipulation
+
+All data manipulation and plotting methods in functime work out of the box with panel datasets: manually calling `group_by` is not required.
+
+```python
+from functime import plotting
+
+plotting.plot_panel(
+  data=y
+  # accepts all kwargs as plotly
+  title=f"Bottom {k} series by coefficient of variation",
+  height=125*k,
+)
+```
+
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Train - Test splitting
+
+Data splitters work with panel datasets out of the box:
+
+```python
+from functime.cross_validation import train_test_split
+
+splitter = train_test_split(forecasting_horizon)
+y_train, y_test = splitter(y)
+```
+
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Define and train a model: a familiar interface
+
+The modeling workflow resembles scikit-learn's:
+
+```python{all|6-9|11|12}
+from functime.forecasting import snaive
+
+frequency = "1mo"
+forecasting_horizon = 12
+
+forecaster_naive = snaive(
+    freq=frequency,
+    sp=12,
+)
+
+_ = forecaster_naive.fit(y=y_train)
+y_bench_pred = forecaster_naive.predict(fh=forecasting_horizon)
+```
+
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Define and train a model: a familiar interface
+
+And also offers a `Transformer`/`Pipeline`-like structure to apply data transformations to prevent data leakages when doing cross validation:
+
+```python{all|3|4-8}
+from functime.preprocessing import scale, add_fourier_terms, roll
+
+target_transforms = scale()
+feature_transforms = roll(
+  window_sizes=(6, 12),
+  stats=("mean", "std"),
+  freq=freq
+)
+```
+
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Define and train a model: a familiar interface
+
+And also offers a `Transformer`/`Pipeline`-like structure to apply data transformations to prevent data leakages when doing cross validation:
+
+```python{all|5|6|7}
+from functime.forecasting import linear_model
+
+forecaster_linear = linear_model(
+    freq=freq,
+    lags=12,
+    target_transform=target_transforms,
+    feature_transform=feature_transforms,
+)
+```
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Some commodities
+
+Cross validation is a built-in method in the forecaster:
+
+```python
+y_preds, y_resids = forecaster_linear.backtest(
+    y=y_train,
+    window_size=60, # 5 years of training data in each fold
+    test_size=forecasting_horizon,
+    step_size=1,
+    n_splits=5
+)
+```
+
+
+---
+
+# 💻 A forecasting workflow with `functime`
+Some commodities
+
+The same goes for generating prediction intervals with conformal predictions:
+
+```python
+y_pred_quantiles = forecaster_linear.conformalize(
+    y_pred=y_pred,
+    y_preds=y_preds,
+    y_resids=y_resids,
+    alphas=[0.1, 0.9]
+)
+```
 
 ---
 
 # 🔎 Diagnostic tools
+The problem with diagnostics with thousands of time series
+
+functime also offers a plethora of methods to *display* and *rank* forecasts across all time series:
+
+```python
+from functime.evaluation import rank_residuals, rank_point_forecasts
+
+rank_bench_point_forecast = rank_point_forecasts(
+    y_true=y_test,
+    y_pred=y_pred,
+    sort_by="mape", # a dozen point metrics, including over/underforecast
+    descending=True,
+)
+```
+
+And we're adding support to sample the series or display the top `k` according to a metric.
+
+---
+
+# 🔎 Diagnostic tools
+Plotting functions that work with panel datasets
+
+`plotting.plot_backtests` supports natively cross-validation predictions:
 
 
+```python
+plotting.plot_backtests(
+    y_train,
+    y_linear_preds,
+)
+```
+
+
+---
+
+# 🔎 Diagnostic tools
+Plotting functions that work with panel datasets
+
+But we also have functions to glance error metrics across time series:
+
+```python
+plotting.plot_residuals(y_backtest_residuals)
+
+```
+
+(Histogram and rug plot of residuals, compatibile with backtesting residuals)
+
+---
+
+# 🔎 Diagnostic tools
+Plotting functions that work with panel datasets
+
+Forecast value-added plot (i.e. compare residuals against residuals of a naive method).
+
+```python
+plotting.plot_fva(y_backtest_residuals)
+```
+
+---
+
+# 🔎 Diagnostic tools
+Plotting functions that work with panel datasets
+
+Scatterplot of predictions against the coefficient of variation.
+
+```python
+plotting.plot_comet(
+    y_train=y_train, y_test=y_test, y_pred=y_pred, height=900, width=900
+)
+```
 
 ---
 
