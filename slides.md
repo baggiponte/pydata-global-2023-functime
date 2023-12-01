@@ -84,6 +84,9 @@ Make forecasting just work at a **reasonable scale** (~90% of use cases):
 
 </v-click>
 
+<!--
+* fit on your local laptop
+-->
 
 ---
 
