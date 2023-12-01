@@ -30,7 +30,7 @@ a **next-generation ML forecasting library**
 
 <v-clicks>
 
-### 🔮 The Problem with Forecasting
+### 🔮 The problem with forecasting
 
 ### 🐻‍❄️ What is Polars?
 
@@ -49,7 +49,7 @@ a **next-generation ML forecasting library**
 
 ---
 
-# 🔮 The Problem with Forecasting
+# 🔮 The problem with forecasting
 A new paradigm to evaluate the forecasting process
 
 <v-clicks>
@@ -69,7 +69,7 @@ Board of Directors of the International Institute of Forecasters
 
 ---
 
-# 🔮 The Problem with Forecasting
+# 🔮 The problem with forecasting
 Reframe the problem
 
 Make forecasting just work at a **reasonable scale** (~90% of use cases):
@@ -183,6 +183,9 @@ For a more thorough overview, watch [Polars' creator latest talk](https://www.yo
 ---
 
 # 🌏 Why global forecasting?
+A lesson from forecasting competitions
+
+Global forecasting simply means fitting a single model on all the time series.
 
 
 ---
