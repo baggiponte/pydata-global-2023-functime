@@ -16,7 +16,6 @@ a **next-generation ML forecasting library**
     👤 Luca Baggi
     💼 ML Engineer @xtream
     🛠️ Maintainer @functime
-
 </div>
 
 <div class="absolute right-5 top-5">
@@ -32,7 +31,7 @@ a **next-generation ML forecasting library**
 
 ### 🔮 The problem with forecasting
 
-### 🐻‍❄️ What is Polars?
+### 📈 `functime`'s answer
 
 ### 🚀 Why is Polars so fast?
 
@@ -52,41 +51,48 @@ a **next-generation ML forecasting library**
 # 🔮 The problem with forecasting
 A new paradigm to evaluate the forecasting process
 
-<v-clicks>
+*"We spend far too many resources generating, reviewing, adjusting, and approving our forecasts, while almost **invariably failing to achieve the level of accuracy desired**."* <a href="https://blogs.sas.com/content/forecasting/2016/10/25/changing-the-paradigm-for-business-forecasting-part-10/"><i>(source)</i></a>
 
-*We spend far too many resources generating, reviewing, adjusting, and approving our forecasts, while almost **invariably failing to achieve the level of accuracy desired**. The evidence now shows that a large proportion of typical business forecasting efforts fail to improve the forecast, or even make it worse. So the conversation needs to change. The focus needs to change.*
+<div align="right">
 
-*We need to **shift our attention from esoteric model building to the forecasting process itself – its efficiency and its effectiveness**.*
-
-<p align=right>
-<a href="https://blogs.sas.com/content/forecasting/2016/10/25/changing-the-paradigm-for-business-forecasting-part-10/">Mike Gilliland</a>
-<br>
+Mike Gilliland<br>
 Board of Directors of the International Institute of Forecasters
-</p>
-
-</v-clicks>
+</div>
 
 
 ---
 
 # 🔮 The problem with forecasting
+A new paradigm to evaluate the forecasting process
+
+*"The focus needs to change. We need to shift our attention **from esoteric model building to the forecasting process itself** – its **efficiency** and its **effectiveness**."* <a href="https://blogs.sas.com/content/forecasting/2016/10/25/changing-the-paradigm-for-business-forecasting-part-10/"><i>(source)</i></a>
+
+<div align="right">
+
+Mike Gilliland<br>
+Board of Directors of the International Institute of Forecasters
+</div>
+
+
+---
+
+# 📈 `functime`'s answer
 Reframe the problem
 
-Make forecasting just work at a **reasonable scale** (~90% of use cases):
+Make forecasting just work at a **reasonable scale** (~90% of use cases).
+
+<v-clicks>
 
 1. Forecast **thousands of time series** without distributed systems (PySpark).
-2. Provide adequate **diagnostic tools**.
-2. Smoothly translate form experimentation to production.
+2. **Feature-engineering** and **diagnostics** API compatible with panel datasets.
+3. Smoothly translate form experimentation to production.
+</v-clicks>
 
 <v-click>
 
-🫢 Spoiler alert: we used Polars and global forecasting
-
+This can be achieved with two ingredients: **Polars** and **global forecasting**.
 </v-click>
 
-<!--
-* fit on your local laptop
--->
 
 ---
 
