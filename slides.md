@@ -4,11 +4,11 @@ layout: cover
 highlighter: shiki
 colorSchema: light
 favicon: favicon/url
-title: How I used Polars to build built functime, a next gen ML forecasting library
+title: How we used Polars to build functime, a next gen ML forecasting library
 ---
 
 # 🔮 functime
-Or how we used **Polars** and **global forecasting** to build\
+How we used **Polars** and **global forecasting** to build\
 a **next-generation ML forecasting library**
 
 <div class="absolute bottom-10">
