@@ -42,7 +42,7 @@ a **next-generation ML forecasting library**
 
 ### 🔎 Diagnostic tools
 
-### 🙌 Wrapping up
+### 🔌 References
 
 </v-clicks>
 
@@ -478,9 +478,37 @@ plotting.plot_comet(
 )
 ```
 
+
 ---
 
-# 🙌 Wrapping up
+# 🔌 References
+A deep dive into the Arrow ecosystem and Polars internals
+
+* [Apache Arrow and Substrait, the secret foundations of Data Engineering](https://www.youtube.com/watch?v=5_EF4KC8XO4&list=PL8uoeex94UhFcwvAfWHybD7SfNgIUBRo-&index=107) - Alessandro Molina @EuroPython 2023
+* [Polars: DataFrames in the multi-core era](https://www.youtube.com/watch?v=tqcudsykOGc&t=1916s) - Ritchie Vink @PyData NYC 2023
+* [Is the great dataframe showdown finally over? Enter: Polars](https://www.youtube.com/watch?v=XsxrhGlkyk0) - Luca Baggi (me) @PyConIt 2023
+
+
+---
+
+# 🔌 References
+More PyData Global 2023 talks
+
+* [Polars and time zones: everything you need to know](https://global2023.pydata.org/cfp/talk/LPEHES/) by Marco Gorelli
+  * Practical showcase on how to use Polars to master datetimes and time-zones
+* [We rewrote tsfresh in Polars and why you should too](https://global2023.pydata.org/cfp/talk/9FEQVK/) by Chris Lo and Mathieu Cayssol
+  * 90-minute workshop to dive deeper into functime internals, Polars integration and benchmarking (thanks to Polars-Rust [plugins](https://github.com/pola-rs/pyo3-polars)!)
+
+
+---
+
+# 🔌 References
+Documentation and communities
+
+* [Polars](https://pola.rs/) web site
+* Polars [discord server](https://discord.com/invite/4UfP5cfBE7)
+* [functime.ai](https://functime.ai/) website and docs
+* functime.ai [discord server](https://discord.gg/8pRsc7Ba)
 
 
 ---
