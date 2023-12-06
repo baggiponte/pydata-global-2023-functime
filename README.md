@@ -6,6 +6,21 @@ Source code for the talk *How I Used Polars to Build `functime`, a Next Gen ML F
 
 - 📽️ [Live]()
 
+## 🚀 `functime` demo
+
+**name** | **open in**
+:-----: | :-------:
+[Scalable Forecasting with `functime`](./notebooks/scalable-forecasting-with-functime.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/pydata-global-2023-functime/blob/main/notebooks/scalable-forecasting-with-functime.ipynb) [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/baggiponte/pydata-global-2023-functime/blob/main/notebooks/scalable-forecasting-with-functime.ipynb) [![SageMaker](https://raw.githubusercontent.com/roboflow-ai/notebooks/main/assets/badges/sage-maker.svg)](https://studiolab.sagemaker.aws/import/github/baggiponte/pydata-global-2023-functime/blob/main/notebooks/scalable-forecasting-with-functime.ipynb)
+
+### How to run locally
+
+Run the install command of any PEP518-compatible package manager, for example `pip`, `hatch` or - my choice - PDM:
+
+```bash
+# install functime and JupyterLab
+pdm install --group=:all
+```
+
 ## 🛩️ How to run
 
 Make sure you have installed the following:
