@@ -1,8 +1,8 @@
-# How I Used Polars to Build functime, a Next Gen ML Forecasting Library
+# 🔮 How I Used Polars to Build functime, a Next Gen ML Forecasting Library
 
 [![cookiecutter slidev](https://img.shields.io/badge/cookiecutter-slidev-D4AA00?logo=cookiecutter&logoColor=fff)](https://github.com/baggiponte/cookiecutter-slidev)
 
-Source code for the talk *How I Used Polars to Build functime, a Next Gen ML Forecasting Library* at PyData Global 2023.
+Source code for the talk *How I Used Polars to Build `functime`, a Next Gen ML Forecasting Library* at PyData Global 2023.
 
 - 📽️ [Live]()
 
