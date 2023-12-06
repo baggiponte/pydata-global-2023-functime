@@ -33,9 +33,9 @@ a **next-generation ML forecasting library**
 
 ### 📈 `functime`'s answer
 
-### 🚀 Why is Polars so fast?
+### 🐻‍❄️ What is Polars?
 
-### 🌏 Why global forecasting?
+### 🌏 What is global forecasting?
 
 ### 💻 A forecasting workflow with `functime`
 
@@ -97,7 +97,7 @@ This can be achieved with two ingredients: **Polars** and **global forecasting**
 ---
 
 # 🐻‍❄️ What is Polars?
-The three plus one key elements
+A brief description
 
 ***Dataframes** powered by a **multithreaded**, vectorized **query engine**, written in Rust*
 
@@ -113,105 +113,44 @@ The three plus one key elements
 
 ---
 
-# 🚀 Why is Polars so fast?
-The key ingredients
+# 🐻‍❄️ What is Polars?
+What makes it so fast
 
 <v-clicks>
 
-1. Efficient **data representation and I/O** with Apache Arrow.
+1. Efficient **data representation and I/O** with Apache Arrow
 2. Work stealing, AKA **efficient multithreading**.
-3. **Query optimisations** through lazy evaluation.
+3. **Query optimisations** through lazy evaluation (e.g.: `DataFrame.sort("col1").head(5)` in pandas vs Polars).
 
 </v-clicks>
 
 
 ---
 
-# 🚀 What makes Polars so fast?
-Apache Arrow
-
-A [memory format specification](https://arrow.apache.org/docs/format/Columnar.html), i.e. how to **represent data in memory**, with implementations in a lot of programming languages (e.g. PyArrow).
-
-<v-clicks>
-
-* Column based representation that plays well with SIMD.
-* Can represent missing values (unlike `numpy`).
-* Nested data types as first-class citizens.
-
-</v-clicks>
-
-
----
-
-# 🚀 What makes Polars so fast?
-Effective multithreading
-
-<v-clicks>
-
-Polars leverages _work stealing_ so that **no thread is idle if other threads are working**.
-
-A **work scheduler** assigns tasks to each thread. When a thread is idle, the job scheduler takes jobs from other queues and assigns them to it.
-
-</v-clicks>
-
-
----
-
-# 🚀 What makes Polars so fast?
-Query optimisations
-
-<v-clicks>
-
-The query is *compiled* into a *plan* which is then optimised.
-
-For example, in pandas a `DataFrame.sort("col1").head()` will be eagerly executed:
-
-1. _All rows_ are sorted.
-2. The top 5 rows are returned.
-
-</v-clicks>
-
-
----
-
-# 🚀 What makes Polars so fast?
-Query optimisations
-
-
-The query is *compiled* into a *plan* which is then optimised.
-
-
-In Polars, the query optimiser recognises this pattern and uses a *top-k search* algorithm to retrieve just what you need.
-
-<v-click>
-
-For a more thorough overview, watch [Polars' creator latest talk](https://www.youtube.com/watch?v=tqcudsykOGc&t=1916s).
-
-</v-click>
-
----
-
-# 🌏 Why global forecasting?
+# 🌏 What is global forecasting?
 A lesson from forecasting competitions
 
 <v-clicks>
 
-Global forecasting simply means fitting a single model on all the time series in your panel dataset.
+Global forecasting just means to **fit a single model on all the time series in your panel dataset**.
 
 This approach proved successful in multiple forecasting competitions, most notably M4 ([1](https://www.sciencedirect.com/science/article/abs/pii/S0169207020301850) [2](https://www.sciencedirect.com/science/article/abs/pii/S0169207020301850)) and M5 ([1](https://www.sciencedirect.com/science/article/pii/S0169207021001874#b47)).
 
 </v-clicks>
 
+
 ---
 
-# 🌏 Why global forecasting?
+# 🌏 What is global forecasting?
 A lesson from forecasting competitions
+
+**Gradient boosted regression trees** secured the top spots, but linear models work well too, provided some **thoughtful and deliberate feature engineering**.
 
 <v-clicks>
 
-**Gradient boosted regression trees** were fit on tens or even hundreds of thousands of time series and reported great performance, as we are accustomed to.
+Here's the recipe to make `functime`: a powerful query engine to perform blazingly fast feature engineering, followed by a single `model.fit()`.
 
-But global forecasting works well with linear models too, with some **thoughtful and deliberate feature engineering**.
+Doesn't have to be _best_ model, but fast to iterate on and scalable to thousands of time series on your laptop.
 
 </v-clicks>
 
@@ -227,6 +166,7 @@ Let's get our hands dirty!
 # inside a virtual environment
 pip install functime
 ```
+
 
 ---
 
