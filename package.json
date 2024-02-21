@@ -2,7 +2,7 @@
   "name": "pydata-global-2023-functime",
   "private": true,
   "dependencies": {
-    "@slidev/cli": "^0.46.0",
+    "@slidev/cli": "^0.48.0-beta.5",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest"
   }
